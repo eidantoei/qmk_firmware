@@ -13,7 +13,7 @@
 // #define ADJUST_MACRO_ENABLE
 
 // * If you want to use the Kana key you can enable this comment out. However, the binary size may be over. *
-// #define KANA_ENABLE
+#define KANA_ENABLE
 
 extern keymap_config_t keymap_config;
 
@@ -84,9 +84,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |   Y  |   U  |   I  |   O  |   P  |  @`  |             | Tab  |   Q  |   W  |   E  |   R  |   T  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |   H  |   J  |   K  |   L  |  ;+  |  :*  |             |      |   A  |   S  |   D  |   F  |   G  |
+   * |   H  |   J  |   K  |   L  |  ;+  |  :*  |             | Ctrl |   A  |   S  |   D  |   F  |   G  |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |   N  |   M  |  ,<  |  .>  |  /?  |  Up  |Enter |KANJI | Shift|   Z  |   X  |   C  |   V  |   B  |
+   * |   N  |   M  |  ,<  |  .>  |  /?  |  Up  |Enter |Raise | Shift|   Z  |   X  |   C  |   V  |   B  |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
    * |Space |Raise |  }]  | APP  | Left | Down |Right |Adjust| Ctrl | GUI  | Alt  |  [{  |Lower | Bksp |
    * `-------------------------------------------------------------------------------------------------'
@@ -94,9 +94,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BAS_E] = LAYOUT( \
     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,                   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   \
     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT,                     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   \
-    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, JP_COLN,                   XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   \
-    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_UP,   KC_ENT,  JP_ZHTG, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   \
-    KC_SPC,  ML_RAIE, JP_RBRC, KC_APP,  KC_LEFT, KC_DOWN, KC_RGHT, ML_ADJ,  KC_LCTL, KC_LALT, KC_LGUI, JP_LBRC, ML_LOWE, KC_BSPC \
+    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, JP_COLN,                   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   \
+    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_UP,   KC_ENT,  ML_RAIE, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   \
+    KC_BSPC, KANA,    JP_RBRC, KC_APP,  KC_LEFT, KC_DOWN, KC_RGHT, ML_LOWE, ML_ADJ,  KC_LALT, KC_LGUI, JP_LBRC, EISU,    KC_SPC \
     ),
 
   /* Lower JIS Normal
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
    * |      |  ,<  |  .>  |  /?  |  \_  |PageUp|      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      | Home |PageDn| End  |      |      |      |      |      |      | Del  |
+   * | Del  |      |      |      | Home |PageDn| End  |      |      |      |      |      |      |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_LOW_E] = LAYOUT( \
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, XXXXXXX, XXXXXXX, XXXXXXX, JP_AT,   JP_LBRC,                   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     _______, XXXXXXX, XXXXXXX, KC_SCLN, JP_COLN, JP_RBRC,                   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     _______, KC_COMM, KC_DOT,  KC_SLSH, JP_BSLS, KC_PGUP, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-    _______, _______, XXXXXXX, _______, KC_HOME, KC_PGDN, KC_END,  _______, _______, _______, _______, XXXXXXX, _______, KC_DEL   \
+    KC_DEL,  _______, XXXXXXX, _______, KC_HOME, KC_PGDN, KC_END,  _______, _______, _______, _______, XXXXXXX, _______, _______  \
     ),
 
   /* Raise JIS Normal
