@@ -30,6 +30,34 @@ enum layer_names {
 #define CMD_KANA MT(MOD_RGUI,KC_LANG1)
 #define LCTL_ESC MT(MOD_LCTL,KC_ESC)
 
+enum combos {
+  SS_WHOLE,
+  SS_SELECT
+};
+
+const uint16_t PROGMEM ss_whole_combo[] = {KC_TAB, KC_E, COMBO_END};
+const uint16_t PROGMEM ss_select_combo[] = {KC_TAB, KC_R, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [SS_WHOLE] = COMBO_ACTION(ss_whole_combo),
+  [SS_SELECT] = COMBO_ACTION(ss_select_combo)
+};
+
+void process_combo_event(uint8_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case SS_WHOLE:
+      if (pressed) {
+        tap_code16(SGUI(KC_3));
+      }
+      break;
+    case SS_SELECT:
+      if (pressed) {
+        tap_code16(SGUI(KC_4));
+      }
+      break;
+  }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRACKET, KC_RBRACKET, KC_BSPACE,

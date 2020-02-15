@@ -17,4 +17,5 @@
 #pragma once
 
 // place overrides here
-
+#define COMBO_COUNT 2
+#define COMBO_TERM 300
