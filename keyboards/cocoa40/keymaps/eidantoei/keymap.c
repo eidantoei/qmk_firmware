@@ -21,6 +21,7 @@ enum layer_names {
 	_NUMS,
 	_SYMS,
 	_FN,
+    _NUMPAD,
 };
 
 #define KC_NUMS LT(_NUMS, KC_SPACE)
@@ -38,17 +39,20 @@ void td_sft_fn_finished(qk_tap_dance_state_t *state, void *user_data)
 {
   if (state->count == 1) {
     register_code(KC_LSHIFT);
-  } else {
+  } else if (state->count == 2) {
     layer_on(_FN);
+  } else {
+    layer_on(_NUMPAD);
   }
 }
 
 void td_sft_fn_reset(qk_tap_dance_state_t *state, void *user_data)
 {
-  if (state->count == 1) {
-    unregister_code(KC_LSHIFT);
-  } else {
+  unregister_code(KC_LSHIFT);
+  if (state->count == 2) {
     layer_off(_FN);
+  } else {
+    layer_off(_NUMPAD);
   }
 }
 
@@ -109,4 +113,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, KC_END, KC_PGDN, _______, _______, _______,
     _______, _______, _______, _______, _______, RESET
   ),
+  [_NUMPAD] = LAYOUT(
+    _______, _______, _______, _______, _______, _______, KC_TAB, KC_7, KC_8, KC_9, KC_MINUS, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_ASTERISK, KC_4, KC_5, KC_6, KC_COLON, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_PLUS, KC_1, KC_2, KC_3, KC_SLASH, _______, _______,
+    _______, _______, _______, KC_0, KC_DOT, _______
+  ),
+
 };
