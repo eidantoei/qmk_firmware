@@ -19,4 +19,4 @@
 // place overrides here
 #define COMBO_COUNT 2
 #define COMBO_TERM 300
-#define TAPPING_TERM 300
+#define TAPPING_TERM 250
