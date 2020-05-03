@@ -62,15 +62,18 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 enum combos {
   SS_WHOLE,
-  SS_SELECT
+  SS_SELECT,
+  SS_OPTION
 };
 
 const uint16_t PROGMEM ss_whole_combo[] = {KC_TAB, KC_E, COMBO_END};
 const uint16_t PROGMEM ss_select_combo[] = {KC_TAB, KC_R, COMBO_END};
+const uint16_t PROGMEM ss_option_combo[] = {KC_TAB, KC_T, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [SS_WHOLE] = COMBO_ACTION(ss_whole_combo),
-  [SS_SELECT] = COMBO_ACTION(ss_select_combo)
+  [SS_SELECT] = COMBO_ACTION(ss_select_combo),
+  [SS_OPTION] = COMBO_ACTION(ss_option_combo)
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -83,6 +86,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case SS_SELECT:
       if (pressed) {
         tap_code16(SGUI(KC_4));
+      }
+      break;
+    case SS_OPTION:
+      if (pressed) {
+        tap_code16(SGUI(KC_5));
       }
       break;
   }
